@@ -1,0 +1,65 @@
+create table produtos (ID int,
+					   nome_produto varchar(50),
+					   preco int,
+                       descricao varchar(50),
+                       categoria varchar(20));
+
+create table usuario (ID int,
+					  nome_usuario varchar(50),
+					  email varchar(30));
+
+create table carrinho (nome_usuario varchar(50),
+					   nome_produto varchar(50),
+                       categoria varchar(20));
+                       
+
+insert into produtos values(1, 'Escova de dentes colgate', 15, '', 'Banheiro');
+insert into produtos values(2, 'Pasta de dentes colgate', 8, '', 'Banheiro');
+insert into produtos values(3, 'Fio dental sorriso', 6, '', 'Banheiro');       
+insert into produtos values(4, 'Colchão solteiro ortobom', 600, '', 'Quarto');                
+insert into produtos values(5, 'Lençol solteiro branco 100linhas', 85, '', 'Quarto');    
+insert into produtos values(6, 'Cadeiraa de escritório erkobom', 350, '', 'Escritorio');                  
+
+insert into usuario values(1, 'Eliezer Souza Almeida', 'eli.souza@gmail.com');           
+insert into usuario values(2, 'Carmem Lucia de Cardoso', 'lulu1973@hotmail.com');       
+insert into usuario values(3, 'Janaina Costa da Cruz ', 'jana.cosuz@outlook.com');       
+
+select*from usuario;
+select*from produtos;
+
+insert into carrinho (nome_usuario, nome_produto, categoria)									        
+	values (
+            (select nome_usuario from usuario where ID = 2),
+			(select nome_produto from produtos where ID = 5),
+            (select categoria from produtos where ID = 5)
+           );
+
+insert into carrinho (nome_usuario, nome_produto, categoria)									        
+	values (
+            (select nome_usuario from usuario where ID = 2),
+			(select nome_produto from produtos where ID = 3),
+            (select categoria from produtos where ID = 3)
+           );
+
+insert into carrinho (nome_usuario, nome_produto, categoria)									        
+	values (
+            (select nome_usuario from usuario where ID = 2),
+			(select nome_produto from produtos where ID = 1),
+            (select categoria from produtos where ID = 1)
+           );
+
+insert into carrinho (nome_usuario, nome_produto, categoria)									        
+	values (
+            (select nome_usuario from usuario where ID = 1),
+			(select nome_produto from produtos where ID = 4),
+            (select categoria from produtos where ID = 4)
+           );
+
+insert into carrinho (nome_usuario, nome_produto, categoria)									        
+	values (
+            (select nome_usuario from usuario where ID = 1),
+			(select nome_produto from produtos where ID = 5),
+            (select categoria from produtos where ID = 5)
+           );
+           
+select*from carrinho;
